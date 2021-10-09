@@ -46,7 +46,7 @@ class SqlExecuttionToSqlite:
             
         """        
         try:
-            with closing(sqlite3.connect(db_path)) as conn:
+            with closing(sqlite3.connect(self.db_path)) as conn:
                 cur = conn.cursor()
                 if mode=="select":
                     cur.execute(sql)
