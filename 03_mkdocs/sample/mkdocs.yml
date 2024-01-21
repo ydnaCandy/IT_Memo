@@ -1,0 +1,7 @@
+site_name: My Docs
+theme: readthedocs
+nav:
+  - index: index.md
+  - section1: test.md
+  - test: 
+      testind: test_dir/indir.md
