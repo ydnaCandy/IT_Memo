@@ -23,7 +23,6 @@ dotnet --version
 
 3. .envとyamlファイルを作成
 
-
 ```env
 POSTGRES_USER={{Sa User}}
 POSTGRES_PASSWORD={{Sa Password}}
@@ -43,13 +42,14 @@ services:
     ports:
       - "15432:5432"
     volumes:
-      - pg_vol:/var/lib/postgresql/data
+      - /var/dockervol/psql/data:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER
       - POSTGRES_PASSWORD
       - POSTGRES_DB
       - POSTGRES_HOST_AUTH_METHOD
       - POSTGRES_INITDB_ARGS
+    restart: always
 
   pleasanter:
     container_name: pleasanter
@@ -61,7 +61,8 @@ services:
       Implem.Pleasanter_Rds_PostgreSQL_OwnerConnectionString: ${Implem_Pleasanter_Rds_PostgreSQL_OwnerConnectionString}
       Implem.Pleasanter_Rds_PostgreSQL_UserConnectionString: ${Implem_Pleasanter_Rds_PostgreSQL_UserConnectionString}
     ports:
-      - "13500:80"
+      - "13500:8080"
+    restart: always
 
   codedefiner:
     container_name: codedefiner
